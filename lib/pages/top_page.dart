@@ -1,5 +1,6 @@
 // import 'package:flutter/cupertino.dart';
 import 'package:chat_app/model/user.dart';
+import 'package:chat_app/pages/setting_profile_page.dart';
 import 'package:chat_app/pages/talk_room_page.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,19 @@ class _TopPageState extends State<TopPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('チャットアプリ')),
+        appBar: AppBar(
+          title: const Text('チャットアプリ'),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SettingProfilePage()));
+                },
+                icon: const Icon(Icons.settings))
+          ],
+        ),
         body: ListView.builder(
             itemCount: userList.length,
             itemBuilder: (context, index) {
